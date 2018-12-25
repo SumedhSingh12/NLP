@@ -27,7 +27,7 @@ for sentence in para:
         else:
             word_to_count[word] += 1
 
-'''The number of frequent words to be considered for the model is to 100 now. It can be changed by changing the parameter in the line below'''
+'''The number of frequent words to be considered for the model is set to 100 now. It can be changed by changing the parameter in the line below'''
 
 frequent_words = heapq.nlargest(100, word_to_count, key = word_to_count.get)
 big_bag = []
