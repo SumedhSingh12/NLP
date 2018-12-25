@@ -5,20 +5,22 @@ import re
 
 #Insert the text between the triple quotes
 paragraph = ''' '''
+para = []
+para = nltk.sent_tokenize(paragraph)
 
 '''Normalising the text by first converting all the characters to lower case
    Then removing all the punctuations
    Removing all the extra spaces'''
    
-for sentence in paragraph:
-    sentence = sentence.lower()
-    sentence = re.sub(r'\W', " ", sentence)
-    sentence = re.sub(r'\s+', " ", sentence)
+for sentence in range(len(para)):
+    para[sentence] = para[sentence].lower()
+    para[sentence] = re.sub(r'\W', " ", para[sentence])
+    para[sentence] = re.sub(r'\s+', " ", para[sentence])
     
 '''Now, creating a dictionary of all the words with their counts'''
 
 word_to_count = {}
-for sentence in paragraph:
+for sentence in para:
     for word in nltk.word_tokenize(sentence):
         if word not in word_to_count:
             word_to_count[word] = 1
@@ -29,7 +31,7 @@ for sentence in paragraph:
 
 frequent_words = heapq.nlargest(100, word_to_count, key = word_to_count.get)
 big_bag = []
-for sentence in paragraph:
+for sentence in para:
     sentence_bag = []
     for word in frequent_words:
         if word in nltk.word_tokenize(sentence):
