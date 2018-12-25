@@ -1,3 +1,4 @@
+'''Creates a bag of words model from a paragraph and then compares all the sentences in the paragraph to create the model.'''
 import nltk
 import numpy as np
 import heapq
